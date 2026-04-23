@@ -1,0 +1,95 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+*.log
+
+# Virtual environments
+.env
+.venv/
+venv/
+ENV/
+env.bak/
+env/
+
+# Databricks / Spark
+*.dbc
+*.class
+*.jar
+*.iml
+*.ipr
+*.iws
+*.scala
+*.sql
+*.rdd
+*.parquet
+*.delta
+*.avro
+*.orc
+*.databricks/
+.dbfs/
+
+# FastAPI / Uvicorn
+*.pid
+*.coverage
+.coverage.*
+.cache/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Jupyter / Databricks notebooks
+.ipynb_checkpoints/
+*.ipynb
+.notebooks/
+*.dbc
+
+# Logs and runtime files
+logs/
+*.log
+*.out
+*.err
+*.pid
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build / Distribution
+build/
+dist/
+*.egg
+*.manifest
+*.spec
+
+# Testing
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Environment & secrets
+.env
+.env.*
+*.secret
+*.key
+*.pem
+*.crt
+
+# Databricks configs
+databricks-config.json
+databricks-cli.cfg
