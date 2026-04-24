@@ -9,3 +9,5 @@ databricks-sdk
 databricks-sql-connector
 databricks-sql-connector[pyarrow]
 python-dotenv
+pydantic-settings
+httpx
