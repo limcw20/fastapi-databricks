@@ -1,0 +1,37 @@
+fastapi-databricks/
+├── .env                        # All secrets/credentials. Never commit this.
+│
+├── db/
+│   └── connection.py           # Manages the SQL connection to Databricks warehouse.
+│                               # Keeps one live connection, auto-reconnects if dropped.
+│                               # Use this for running actual SQL queries (SELECT, SHOW, etc.)
+│
+│─── main.py                 # App entry point. Registers all routers, handles startup/shutdown.
+│
+│─── config.py               # Reads .env into a typed Settings object.
+│                           # Import `settings` from here instead of using os.getenv() directly.
+│
+│─── models/
+│    ├── schemas.py          # Pydantic models — defines the shape of request/response bodies.
+│    │                       # Edit this when you need new fields in your API requests.
+│    └── enums.py            # Databricks privilege types (SELECT, USE_CATALOG, etc.) as enums.
+│                           # Edit this to add new privilege types.
+│
+│─── services/
+│    ├── databricks_client.py  # Handles OAuth2 token fetching using client_id + client_secret.
+│    │                         # Caches the token so it's not refetched on every request.
+│    │                         # All REST API calls get their auth headers from here.
+│    │
+│    ├── users_service.py      # Logic for adding and looking up Databricks workspace users.
+│    │                         # Calls the SCIM /Users endpoint (no premium needed).
+│    │
+│    ├── grants_service.py     # Logic for granting and revoking permissions on catalogs,
+│    │                         # schemas, and tables via the Unity Catalog Grants API.
+│    │
+│    └── query_service.py      # Runs SQL via the warehouse connection (db_manager).
+│                              # Use for SHOW TABLES, SHOW CATALOGS, SELECT queries, etc.
+│ 
+│─── routers/
+│       ├── users.py            # HTTP routes for /users — POST to add, GET to look up.
+│       ├── grants.py           # HTTP routes for /grants — POST to grant, DELETE to revoke.
+│       └── provision.py        # HTTP route for /provision — adds user AND grants in one call.
