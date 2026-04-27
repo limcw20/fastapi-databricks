@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes import users
+from routes import users, permissions, provision
 from db.connection import db_manager
 import httpx
 from services.databricks_client import get_headers
@@ -8,6 +8,8 @@ from config import settings
 app = FastAPI()
 
 app.include_router(users.router, prefix="/users")
+app.include_router(permissions.router, prefix="/grants")
+app.include_router(provision.router, prefix="/provision")
 
 
 @app.get("/whoami")
