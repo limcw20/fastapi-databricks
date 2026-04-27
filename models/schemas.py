@@ -9,6 +9,13 @@ class GrantRequest(BaseModel):
     catalog: str
     schema_name: Optional[str] = None
     table: Optional[str] = None
+
+class ProvisionRequest(BaseModel):
+    principal: str
+    catalog: str
+    schema_name: Optional[str] = None
+    table: Optional[str] = None
+
 class RevokeRequest(BaseModel):
     principal: str
     catalog: str
