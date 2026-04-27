@@ -7,6 +7,14 @@ app = FastAPI()
 app.include_router(users.router, prefix="/users")
 
 
+@app.get("/whoami")
+async def whoami():
+    async with httpx.AsyncClient() as client:
+        r = await client.get(
+            f"{settings.databricks_host}/api/2.0/preview/scim/v2/Me",
+            headers=await get_headers()
+        )
+        return r.json()
 
 @app.on_event("shutdown")
 async def shutdown():
