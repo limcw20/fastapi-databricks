@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from routes import users
 from db.connection import db_manager
+import httpx
+from services.databricks_client import get_headers
+from config import settings
 
 app = FastAPI()
 
